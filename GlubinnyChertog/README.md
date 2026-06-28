@@ -1,9 +1,24 @@
 # Глубинный Чертог (Glubinny Chertog)
 
-Auto-shooter / Bullet Heaven + Roguelike + Base Building, Android, Unity 6.3 LTS.
+Auto-shooter / Bullet Heaven + Roguelike + Base & Sortie structure, Android, Unity 6.3 LTS.
 
 Dark fantasy in the spirit of Darkest Dungeon: a cursed estate's catacombs,
-a sanity meter, and a surface camp you rebuild between runs.
+a sanity meter, and a fortified surface camp (the Chertog) you rebuild between
+sorties.
+
+**Core loop — Base & Sortie (inspired by Alien Invasion: RPG Idle Space):**
+- **Chertog (base)** — persistent hub: heal, upgrade gear, build/upgrade
+  structures, NPC quests, resource exchange. Always safe.
+- **Sortie (вылазка)** — a single 4–5 min run into the depths. The deeper
+  you go, the tougher the enemies and the richer the loot.
+- **Extraction risk** — loot gathered during a sortie is only banked if you
+  make it back to the Chertog alive. Die before extracting and unbanked
+  loot is lost — this is the core risk/reward decision every run ("push
+  deeper or extract now").
+- **Revive** (free + rewarded-video) now reads narratively as "a desperate
+  chance to drag your loot back to the surface."
+- *(Post-MVP, optional)* idle/passive layer: send recovered allies/servants
+  to auto-farm previously cleared zones while you're on another sortie.
 
 ## Tech Stack
 
@@ -17,12 +32,16 @@ a sanity meter, and a surface camp you rebuild between runs.
 
 ## Run Design (current balance target)
 
-- Run length: **4–5 minutes** (270s reference)
+- Run length: **4–5 minutes** (270s reference) per sortie
 - Phases: Intro (0–60s) → Rising (60–150s) → Peak (150–210s) → Finale/Boss (210–270s)
 - Upgrade picks: ~5 per run (every 45–60s)
 - Sanity meter: 0–50% no effect, 50–80% cosmetic only, 80–100% guaranteed
   "Mad Fury" buff (no debuffs — casual-tuned)
-- Soft death: 1 free auto-revive + 1 rewarded-video revive per run
+- Soft death: 1 free auto-revive + 1 rewarded-video revive per sortie —
+  framed as a last chance to extract with loot intact
+- **Extraction**: loot is provisional during the sortie; only banked to the
+  Chertog on successful return (boss kill / timer end / manual extract).
+  Death before extraction forfeits unbanked loot.
 - Target run completion rate: 75–80%
 - Target boss death rate: 15–20%
 
